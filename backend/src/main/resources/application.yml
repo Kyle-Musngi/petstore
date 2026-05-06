@@ -1,0 +1,22 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /musngi/api/v1
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:petstore}
+    username: ${POSTGRES_USER:petstore}
+    password: ${POSTGRES_PASSWORD:petstore}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+
+logging:
+  level:
+    org.hibernate.SQL: warn

@@ -1,50 +1,68 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+- Version change: unversioned -> 1.0.0
+- Modified principles: [PRINCIPLE_1_NAME] -> I. Commerce-First Catalog, [PRINCIPLE_2_NAME] -> II. Stack Fidelity,
+	[PRINCIPLE_3_NAME] -> III. Data Integrity First, [PRINCIPLE_4_NAME] -> IV. API-First Contracts,
+	[PRINCIPLE_5_NAME] -> V. Quality Gates
+- Added sections: None (template filled)
+- Removed sections: None
+- Templates requiring updates: ✅ .specify/templates/plan-template.md, ✅ .specify/templates/spec-template.md,
+	✅ .specify/templates/tasks-template.md
+- Follow-up TODOs: None
+-->
+# PetStore Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Commerce-First Catalog
+The MVP MUST prioritize a complete browse-to-order flow: browse pets by category,
+view pet details, add to cart, and place an order with delivery info. Features
+outside this flow (admin tools, recommendations, loyalty, etc.) are deferred
+until the core flow is stable and testable.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Stack Fidelity
+The implementation MUST use Java Spring Boot for the API, PostgreSQL for data,
+React for the UI, Tailwind and MUI for styling, and Docker for containerization.
+Substitutions are not allowed without a constitution amendment.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Data Integrity First
+All writes MUST be validated on the server, and critical invariants (inventory
+counts, order totals, pet availability) MUST be enforced in the database via
+constraints and transactions. Frontend validation is convenience only.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. API-First Contracts
+The backend API is the source of truth and MUST expose stable REST endpoints
+with documented request/response schemas and consistent error shapes. Any API
+change MUST include contract updates before UI changes.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Quality Gates
+Every core flow (browse, cart, checkout) MUST have tests that verify the full
+stack path. Code changes that touch core flow logic MUST include relevant unit
+or integration coverage before being considered complete.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Architecture and Deployment Constraints
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- The system MUST be deployable to Render free-tier services with clear env
+	configuration and resource-aware defaults.
+- Docker Compose MUST support local development for API, database, and UI.
+- Data migrations MUST be versioned and repeatable across environments.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow and Quality Gates
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Each feature spec and plan MUST include a constitution check and note any
+	exceptions with justification.
+- Seed data MUST cover all pet categories (dogs, cats, birds, reptiles, fish)
+	to enable consistent demos and tests.
+- Logging MUST capture order placement and inventory changes with request IDs.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- This constitution supersedes all other project guidance.
+- Amendments require a documented rationale, version bump, and update to
+	dependent templates when applicable.
+- Versioning follows semantic versioning: MAJOR for incompatible governance
+	shifts, MINOR for new or expanded principles, PATCH for clarifications.
+- Every plan and task set MUST confirm compliance or explicitly record
+	exceptions in the Constitution Check section.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-05-06 | **Last Amended**: 2026-05-06

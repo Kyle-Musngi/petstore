@@ -1,0 +1,34 @@
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+.gradle/
+build/
+out/
+
+# Spring Boot
+*.log
+
+# Node
+node_modules/
+dist/
+build/
+*.log
+.env*
+
+# Python (if used for tooling)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Docker
+*.env
