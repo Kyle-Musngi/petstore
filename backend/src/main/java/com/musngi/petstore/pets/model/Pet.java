@@ -81,23 +81,47 @@ public class Pet {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public PetCategory getCategory() {
         return category;
+    }
+
+    public void setCategory(PetCategory category) {
+        this.category = category;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public AvailabilityStatus getAvailabilityStatus() {
         return availabilityStatus;
+    }
+
+    public void setAvailabilityStatus(AvailabilityStatus availabilityStatus) {
+        this.availabilityStatus = availabilityStatus;
     }
 
     public BigDecimal getPrice() {
         return price;
     }
 
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
     public List<String> getImageUrls() {
         return imageUrls;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
     }
 }

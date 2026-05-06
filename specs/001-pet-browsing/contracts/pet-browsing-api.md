@@ -64,6 +64,78 @@ Returns a single pet detail record.
 }
 ```
 
+## POST /pets
+
+Creates a new pet.
+
+**Request**
+
+```json
+{
+  "name": "Max",
+  "categoryId": "uuid",
+  "description": "Energetic and loyal",
+  "price": 299.99,
+  "imageUrls": ["https://example.com/pets/max.jpg"]
+}
+```
+
+**Response 201**
+
+```json
+{
+  "data": {
+    "id": "uuid",
+    "name": "Max",
+    "category": "dogs",
+    "description": "Energetic and loyal",
+    "availabilityStatus": "available",
+    "imageUrls": ["https://example.com/pets/max.jpg"],
+    "price": 299.99
+  }
+}
+```
+
+## PATCH /pets/{id}
+
+Updates an existing pet.
+
+**Request** (all fields optional)
+
+```json
+{
+  "name": "Maximus",
+  "description": "Updated description",
+  "price": 349.99,
+  "availabilityStatus": "unavailable",
+  "imageUrls": ["https://example.com/pets/max-new.jpg"]
+}
+```
+
+**Response 200**
+
+```json
+{
+  "data": {
+    "id": "uuid",
+    "name": "Maximus",
+    "category": "dogs",
+    "description": "Updated description",
+    "availabilityStatus": "unavailable",
+    "imageUrls": ["https://example.com/pets/max-new.jpg"],
+    "price": 349.99
+  }
+}
+```
+
+## DELETE /pets/{id}
+
+Deletes a pet.
+
+**Response 204**
+
+(No content)
+
 ## POST /carts/items
 
 Adds a pet to the current cart.

@@ -9,7 +9,9 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @SpringBootTest
@@ -38,5 +40,13 @@ public abstract class IntegrationTestBase {
 
     protected static MockHttpServletRequestBuilder apiPost(String path, Object... uriVars) {
         return post(API_CONTEXT_PATH + path, uriVars).contextPath(API_CONTEXT_PATH);
+    }
+
+    protected static MockHttpServletRequestBuilder apiPatch(String path, Object... uriVars) {
+        return patch(API_CONTEXT_PATH + path, uriVars).contextPath(API_CONTEXT_PATH);
+    }
+
+    protected static MockHttpServletRequestBuilder apiDelete(String path, Object... uriVars) {
+        return delete(API_CONTEXT_PATH + path, uriVars).contextPath(API_CONTEXT_PATH);
     }
 }
