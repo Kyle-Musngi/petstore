@@ -1,6 +1,8 @@
 import { PetDetail as PetDetailType } from '../services/petApi';
 import { formatPeso } from '../services/currency';
 import PetImage from './PetImage';
+import { Grid, Paper, Typography, Chip, Button, Box } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 interface PetDetailProps {
   pet: PetDetailType;
@@ -9,28 +11,58 @@ interface PetDetailProps {
 
 export default function PetDetail({ pet, onAddToCart }: PetDetailProps) {
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)]">
-      <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-        <div className="mb-4 aspect-[4/3] w-full overflow-hidden rounded-lg bg-slate-100">
-          <PetImage src={pet.imageUrls[0]} alt={pet.name} />
-        </div>
-        <div className="text-2xl font-semibold tracking-tight">{pet.name}</div>
-        <div className="mt-1 text-xs font-medium uppercase text-slate-500">{pet.category}</div>
-        <p className="mt-4 leading-7 text-slate-700">{pet.description}</p>
-      </div>
-      <div className="h-fit rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-        <div className="text-sm font-medium text-slate-500">Adoption fee</div>
-        <div className="mt-1 text-3xl font-semibold">{formatPeso(pet.price)}</div>
-        <div className="mt-4 inline-flex rounded-md bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-800">
-          {pet.availabilityStatus}
-        </div>
-        <button
-          onClick={onAddToCart}
-          className="mt-6 w-full rounded-lg bg-emerald-700 px-4 py-3 font-semibold text-white hover:bg-emerald-800"
-        >
-          Add to cart
-        </button>
-      </div>
-    </div>
+    <Grid container spacing={3}>
+      <Grid item xs={12} lg={8}>
+        <Paper elevation={1} sx={{ p: 3 }}>
+          <Box
+            sx={{
+              mb: 3,
+              aspectRatio: '4/3',
+              width: '100%',
+              overflow: 'hidden',
+              borderRadius: 1,
+              backgroundColor: '#f1f5f9'
+            }}
+          >
+            <PetImage src={pet.imageUrls[0]} alt={pet.name} />
+          </Box>
+          <Typography variant="h4" component="h1" sx={{ fontWeight: 600, mb: 1 }}>
+            {pet.name}
+          </Typography>
+          <Typography variant="caption" color="textSecondary" sx={{ textTransform: 'uppercase', display: 'block', mb: 3 }}>
+            {pet.category}
+          </Typography>
+          <Typography variant="body1" sx={{ lineHeight: 1.7, color: 'text.secondary' }}>
+            {pet.description}
+          </Typography>
+        </Paper>
+      </Grid>
+      <Grid item xs={12} lg={4}>
+        <Paper elevation={1} sx={{ p: 3, height: 'fit-content' }}>
+          <Typography variant="caption" color="textSecondary" sx={{ textTransform: 'uppercase' }}>
+            Adoption fee
+          </Typography>
+          <Typography variant="h4" sx={{ fontWeight: 600, my: 2 }}>
+            {formatPeso(pet.price)}
+          </Typography>
+          <Chip
+            label={pet.availabilityStatus}
+            color="success"
+            sx={{ mb: 3, backgroundColor: '#f0fdf4', color: '#166534' }}
+          />
+          <Button
+            onClick={onAddToCart}
+            variant="contained"
+            color="success"
+            size="large"
+            fullWidth
+            startIcon={<ShoppingCartIcon />}
+            sx={{ py: 1.5, fontWeight: 600 }}
+          >
+            Add to cart
+          </Button>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 }

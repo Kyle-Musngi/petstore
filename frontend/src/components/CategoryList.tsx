@@ -1,3 +1,4 @@
+import { Box, Button } from '@mui/material';
 import { Category } from '../services/petApi';
 
 interface CategoryListProps {
@@ -8,21 +9,18 @@ interface CategoryListProps {
 
 export default function CategoryList({ categories, selectedId, onSelect }: CategoryListProps) {
   return (
-    <div className="flex gap-2 overflow-x-auto pb-1">
+    <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 2 }}>
       {categories.map((category) => (
-        <button
+        <Button
           key={category.id}
           onClick={() => onSelect(category)}
-          className={[
-            'shrink-0 rounded-lg border px-4 py-2 text-sm font-semibold transition',
-            selectedId === category.id
-              ? 'border-emerald-700 bg-emerald-700 text-white'
-              : 'border-slate-200 bg-white text-slate-700 hover:border-emerald-500 hover:text-emerald-800'
-          ].join(' ')}
+          variant={selectedId === category.id ? 'contained' : 'outlined'}
+          color={selectedId === category.id ? 'success' : 'inherit'}
+          sx={{ whiteSpace: 'nowrap' }}
         >
           {category.displayLabel}
-        </button>
+        </Button>
       ))}
-    </div>
+    </Box>
   );
 }
