@@ -17,7 +17,7 @@ export default function PetList({ pets }: PetListProps) {
           className="group rounded-lg border border-slate-200 bg-white p-3 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-500 hover:shadow-md"
         >
           <div className="mb-3 aspect-[4/3] w-full overflow-hidden rounded-lg bg-slate-100">
-            <PetImage src={pet.imageUrl} alt={pet.name} />
+            <PetImage id={pet.id} src={pet.imageUrl} alt={pet.name} />
           </div>
           <div className="flex items-center justify-between">
             <div>

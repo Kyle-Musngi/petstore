@@ -1,0 +1,1 @@
+-- Migration V6: No changes needed (Max and Buddy have been removed)
