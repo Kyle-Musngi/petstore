@@ -36,7 +36,6 @@ services:
   - type: web
     name: petstore-web
     env: static
-    region: singapore
     buildCommand: npm install --prefix frontend; npm run build --prefix frontend
     staticPublishPath: frontend/dist
     routes:
