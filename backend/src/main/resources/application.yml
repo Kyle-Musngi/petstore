@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
   servlet:
     context-path: /musngi/api/v1
 
@@ -16,7 +16,6 @@ spring:
         format_sql: true
   flyway:
     enabled: true
-    validate-on-migrate: false
 
 logging:
   level:

@@ -1,0 +1,48 @@
+services:
+  - type: web
+    name: petstore-api
+    env: java
+    plan: free
+    rootDir: backend
+    buildCommand: ./gradlew bootJar
+    startCommand: java -jar build/libs/*.jar
+    envVars:
+      - key: JAVA_VERSION
+        value: 21
+      - key: POSTGRES_HOST
+        fromDatabase:
+          name: petstore-db
+          property: host
+      - key: POSTGRES_PORT
+        fromDatabase:
+          name: petstore-db
+          property: port
+      - key: POSTGRES_DB
+        fromDatabase:
+          name: petstore-db
+          property: database
+      - key: POSTGRES_USER
+        fromDatabase:
+          name: petstore-db
+          property: user
+      - key: POSTGRES_PASSWORD
+        fromDatabase:
+          name: petstore-db
+          property: password
+
+  - type: static
+    name: petstore-web
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install; npm run build
+    publishDir: dist
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: VITE_API_BASE_URL
+        value: https://petstore-api.onrender.com/musngi/api/v1
+
+databases:
+  - name: petstore-db
+    plan: free
+    postgresMajorVersion: 16
