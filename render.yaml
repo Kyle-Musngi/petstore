@@ -30,8 +30,8 @@ services:
           name: petstore-db
           property: password
 
-  - type: static_site
-    name: petstore-web
+staticSites:
+  - name: petstore-web
     plan: free
     rootDir: frontend
     buildCommand: npm install; npm run build
