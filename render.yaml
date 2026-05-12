@@ -30,7 +30,7 @@ services:
           name: petstore-db
           property: password
 
-  - type: static
+  - type: static_site
     name: petstore-web
     plan: free
     rootDir: frontend
