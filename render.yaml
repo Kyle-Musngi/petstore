@@ -30,7 +30,7 @@ services:
   - type: web
     name: petstore-web
     env: static
-    buildCommand: npm ci --prefix frontend; npm run build --prefix frontend
+    buildCommand: npm install --prefix frontend; npm run build --prefix frontend
     staticPublishPath: frontend/dist
     routes:
       - type: rewrite
