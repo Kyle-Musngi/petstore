@@ -3,9 +3,15 @@ services:
     name: petstore-api
     plan: free
     env: docker
+    region: singapore
     dockerContext: ./backend
     dockerfilePath: ./backend/Dockerfile
     envVars:
+      - key: CORS_ALLOWED_ORIGINS
+        fromService:
+          type: web
+          name: petstore-web
+          envVarKey: RENDER_EXTERNAL_URL
       - key: POSTGRES_HOST
         fromDatabase:
           name: petstore-db
@@ -30,6 +36,7 @@ services:
   - type: web
     name: petstore-web
     env: static
+    region: singapore
     buildCommand: npm install --prefix frontend; npm run build --prefix frontend
     staticPublishPath: frontend/dist
     routes:
@@ -48,5 +55,6 @@ services:
 databases:
   - name: petstore-db
     plan: free
+    region: singapore
     databaseName: petstore
     user: petstore
