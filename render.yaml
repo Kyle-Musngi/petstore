@@ -2,13 +2,10 @@ services:
   - type: web
     name: petstore-api
     plan: free
-    env: java
-    rootDir: backend
-    buildCommand: ./gradlew bootJar
-    startCommand: java -jar build/libs/*.jar
+    env: docker
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
     envVars:
-      - key: JAVA_VERSION
-        value: 21
       - key: POSTGRES_HOST
         fromDatabase:
           name: petstore-db
